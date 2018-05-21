@@ -11,8 +11,13 @@ public class Main {
 
     private static int PORT = 2017;
 
-    public static void main(String[] args) throws UnknownHostException {
-        MWebSocketService socketServer = new MWebSocketService(PORT);
+    public static void main(String[] args) {
+        MWebSocketService socketServer = null;
+        try {
+            socketServer = new MWebSocketService(PORT);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
         socketServer.start();
 
         try {
